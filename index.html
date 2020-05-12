@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const public_key = 'sandbox_i72768057508';
+    const amount = '0.05';
+    const type = 'buy';
+    const currency = 'UAH';
+    const order_id = '1';
+    const language = 'ru';
+    const link = 'https://www.liqpay.com/api/pay';
+
+    const main = async () => {
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        data: JSON.stringify({
+          public_key,
+          amount,
+          currency,
+          order_id,
+          language,
+        })
+      }
+      const responce = await fetch(link, options);
+      const data = await responce.json();
+      console.log(data);
+    }
+    main();
+  </script>
+</body>
+
+</html>
